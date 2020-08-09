@@ -1,24 +1,7 @@
 # dmn-wrapper
+Interface for Camunda DMN Tables. Should allow searching and modifying existing DMN
+tables using a custom UI. Use `dmn-js` to display rendered result.
 
-## Project setup
-```
-npm install
-```
+Try `dmn-moddle` for editing DMN XML files.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Try `faster-xml` for parsing XML into Javascript object to support search/filtering.

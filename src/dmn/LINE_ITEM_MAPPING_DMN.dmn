@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="DRD_123" name="LINE ITEM MAPPING DMN" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.1.1">
+  <decision id="LINE_ITEM_MAPPING_DMN" name="LINE ITEM MAPPING DMN">
+    <decisionTable id="DecisionTable_0sxgf4k" hitPolicy="COLLECT">
+      <input id="Input_1" label="DESCRIPTION">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>SOURCE_LINE_ITEM.DESCRIPTION</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1juns0r" label="PRICE">
+        <inputExpression id="LiteralExpression_0cijcij" typeRef="double">
+          <text>SOURCE_LINE_ITEM.PRICE</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1qwtz1b" label="SOURCE" name="source" typeRef="string" />
+      <output id="Output_1" label="TARGET" name="target" typeRef="string" />
+      <output id="OutputClause_1k9efl0" label="VALUE" name="value" typeRef="string" />
+      <rule id="DecisionRule_0qmq0l6">
+        <inputEntry id="UnaryTests_0xk1rb3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16lmw4j">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jglnvn">
+          <text>"NUMBER"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1du5o4e">
+          <text>"Number"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rf42n6">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w9ktxd">
+        <inputEntry id="UnaryTests_1go27s4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xlrp9p">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0h94bqd">
+          <text>"DESCRIPTION"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k1x3bq">
+          <text>"Description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tpdpcy">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17u0t9h">
+        <inputEntry id="UnaryTests_0vud4d9">
+          <text>"FOO"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0drsq8y">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10qpo69">
+          <text>"REF_CODE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16g5e9w">
+          <text>"Code"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ubc62c">
+          <text>"TEST_CODE"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1shjbba">
+        <inputEntry id="UnaryTests_11pove3">
+          <text>"BAR"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ap5tbw">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17dgrx6">
+          <text>"REF_CODE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sob0gy">
+          <text>"Code"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fzifgw">
+          <text>"TEST_BAR_CODE"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0y1x74l">
+        <inputEntry id="UnaryTests_17iagza">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sh0klb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eohyy5">
+          <text>"PRICE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_034jq3i">
+          <text>"UnitPrice"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13kfqm5">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l9xikd">
+        <inputEntry id="UnaryTests_0fnao3s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q6xqrz">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gmkt3q">
+          <text>"UNITS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sx36yf">
+          <text>"Units"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h8nigy">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="LINE_ITEM_MAPPING_DMN">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

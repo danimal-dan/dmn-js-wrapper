@@ -9,6 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "dmn-js": "^9.2.1",
+    "dmn-moddle": "^9.1.0",
+    "element-ui": "^2.13.2",
+    "fast-xml-parser": "^3.17.4",
     "vue": "^2.6.11"
   },
   "devDependencies": {
