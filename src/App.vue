@@ -204,6 +204,11 @@ export default {
 </script>
 
 <style lang="scss">
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import '~element-ui/lib/theme-chalk/reset.css';
+@import '~element-ui/packages/theme-chalk/src/index.scss';
+
 #app {
   margin-top: 60px;
 
