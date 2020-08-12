@@ -295,7 +295,7 @@ export default {
             reject(err);
           }
 
-          console.log('generated xml', xml);
+          console.info('generated xml', xml);
           this.xmlData = xml;
           this.syncCamundaXml();
           resolve(xml);
