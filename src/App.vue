@@ -188,7 +188,7 @@ export default {
             console.error('error rendering', err);
             reject(err);
           } else {
-            console.log('rendered');
+            console.info('rendered');
 
             var activeEditor = this.camundaDmnViewer.getActiveViewer();
 
@@ -211,7 +211,7 @@ export default {
             reject(err);
           }
 
-          console.log('initialized', definitions);
+          console.info('initialized', definitions);
           this.moddleDefinitions = definitions;
           resolve(definitions);
         });
