@@ -198,11 +198,10 @@ export default {
             // zoom to fit full viewport
             canvas.zoom('fit-viewport');
 
-            if (this.camundaDmnViewer.getViews()?.[1]) {
+            const dmnTableView = this.camundaDmnViewer.getViews()?.[1];
+            if (dmnTableView) {
               console.info('switching to DMN table view');
-              this.camundaDmnViewer._switchView(
-                this.camundaDmnViewer.getViews()[1]
-              );
+              this.camundaDmnViewer.open(dmnTableView);
             }
 
             resolve();
