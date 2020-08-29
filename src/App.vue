@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <p v-show="dmnIsValid">
-      <el-button type="success" icon="el-icon-check" circle />
-      DMN IS VALID
-    </p>
-    <p v-show="!dmnIsValid">
-      <el-button type="danger" icon="el-icon-close" circle />
-      DMN IS NOT VALID
-    </p>
+    <el-row style="background: #EEE; margin-bottom: 18px;">
+      DOCUMENT:
+      <el-select
+        v-model="document"
+        placeholder="Select a Document"
+        @change="onDocumentChange"
+      >
+        <el-option
+          v-for="document in Object.keys($options.Document)"
+          :label="document"
+          :key="document"
+          :value="document"
+        />
+      </el-select>
+    </el-row>
     <el-tabs type="card">
       <el-tab-pane label="Search and Filter">
         <h2>Custom Interface for Search and Filter</h2>
@@ -69,9 +76,15 @@
 </template>
 
 <script>
-import LineItemMappingDmn from '!raw-loader!./assets/dmn/LINE_ITEM_MAPPING_DMN_BIC_BOI.dmn';
+import LineItemMappingDmn from '!raw-loader!./assets/dmn/LINE_ITEM_MAPPING_DMN.dmn';
+import LineItemMappingDmnBicBoi from '!raw-loader!./assets/dmn/LINE_ITEM_MAPPING_DMN_BIC_BOI.dmn';
 import DmnJS from 'dmn-js';
 import DmnModdle from 'dmn-moddle';
+
+const Document = Object.freeze({
+  LineItemMappingDmn,
+  LineItemMappingDmnBicBoi,
+});
 
 const DMN_ROOT = 'dmn:Definitions';
 
@@ -95,6 +108,7 @@ function goodEnoughUidGenerator(length = 8) {
 }
 
 export default {
+  Document,
   ColumnTypes,
   name: 'App',
   computed: {
@@ -181,11 +195,11 @@ export default {
   },
   data() {
     return {
-      dmnIsValid: true,
       camundaDmnViewer: new DmnJS({
         height: '100%',
         width: '100%',
       }),
+      document: 'LineItemMappingDmn',
       xmlData: LineItemMappingDmn,
       moddleDefinitions: undefined,
       currentRow: undefined,
@@ -212,13 +226,17 @@ export default {
           } else {
             console.info('rendered');
 
-            var activeEditor = this.camundaDmnViewer.getActiveViewer();
+            const activeEditor = this.camundaDmnViewer.getActiveViewer();
 
-            // access active editor components
-            var canvas = activeEditor.get('canvas');
+            try {
+              // access active editor components
+              const canvas = activeEditor.get('canvas');
 
-            // zoom to fit full viewport
-            canvas.zoom('fit-viewport');
+              // zoom to fit full viewport
+              canvas.zoom('fit-viewport');
+            } catch (e) {
+              console.warn('fit to canvas failed', e);
+            }
 
             const dmnTableView = this.camundaDmnViewer.getViews()?.[1];
             if (dmnTableView) {
@@ -336,6 +354,12 @@ export default {
           resolve(xml);
         });
       });
+    },
+    onDocumentChange(documentId) {
+      this.xmlData = Document[documentId];
+
+      this.syncCamundaXml();
+      this.syncModdleXml();
     },
   },
 };
