@@ -20,8 +20,15 @@
         >
           Add Rule
         </el-button>
+        <el-input
+          prefix-icon="el-icon-search"
+          type="primary"
+          style="float: right; margin-bottom: 18px; margin-right: 9px; width: 200px"
+          placeholder="Full-text Search"
+          v-model="search"
+        />
         <el-table
-          :data="customTableData"
+          :data="customTableDataFiltered"
           :header-cell-class-name="cellClassNameAssigner"
           :cell-class-name="cellClassNameAssigner"
           highlight-current-row
@@ -36,6 +43,8 @@
             :filterMethod="filterMethod(column.id)"
             :filters="getFiltersForColumn(column.id)"
             filter-multiple
+            sortable
+            :sort-method="columnSortMethod(column.id)"
           />
         </el-table>
         <el-dialog :visible.sync="ruleEditorVm.visible">
@@ -139,6 +148,18 @@ export default {
         }, {});
       });
     },
+    customTableDataFiltered() {
+      if (!this.search?.length) {
+        return this.customTableData;
+      }
+
+      return this.customTableData.filter(
+        row =>
+          Object.values(row).filter(column =>
+            (column || '')?.text?.includes(this.search)
+          ).length
+      );
+    },
     /**
      * Produces a map with the key being the column definition id and the values being a Set of
      * the text for each rule in the column.
@@ -168,6 +189,7 @@ export default {
       xmlData: LineItemMappingDmn,
       moddleDefinitions: undefined,
       currentRow: undefined,
+      search: undefined,
       ruleEditorVm: {
         visible: false,
         rule: {},
@@ -258,6 +280,13 @@ export default {
         },
         {}
       );
+    },
+    columnSortMethod(columnId) {
+      return (rowA, rowB) => {
+        return (rowA?.[columnId]?.text || '').localeCompare(
+          rowB?.[columnId]?.text
+        );
+      };
     },
     onAddRule() {
       const rule = this.ruleEditorVm.rule;
