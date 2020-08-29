@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import LineItemMappingDmn from '!raw-loader!./assets/dmn/LINE_ITEM_MAPPING_DMN.dmn';
+import LineItemMappingDmn from '!raw-loader!./assets/dmn/LINE_ITEM_MAPPING_DMN_BIC_BOI.dmn';
 import DmnJS from 'dmn-js';
 import DmnModdle from 'dmn-moddle';
 
